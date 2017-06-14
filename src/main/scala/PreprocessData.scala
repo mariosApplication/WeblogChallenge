@@ -1,8 +1,8 @@
 /**
   * Created by mariosk on 13/06/17.
   */
-object PreprocessData {
-  case class LogLine(
+object PreprocessData extends Serializable {
+  case class LogLine (
     timestamp: String,
     elb: String,
     client_port: String,
@@ -17,7 +17,7 @@ object PreprocessData {
     request: String,
     user_agent: String,
     ssl_cipher: String,
-    ssl_protocol: String)
+    ssl_protocol: String) extends Serializable
 
   def parseLine(line: String): LogLine = {
     val logsPattern = """^(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) \"([^\"]+)\" \"([^\"]+)\" (\S+) (\S+)""".r
