@@ -21,9 +21,11 @@ object PreprocessData extends Serializable {
     ssl_cipher: String,
     ssl_protocol: String) extends Serializable
 
-  lazy val timeFormat: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ")
-
-  def parseTime(s: String): Long = timeFormat.parseDateTime(s).getMillis
+  val parseTime: (String) => Long = (s: String) =>
+    DateTimeFormat
+      .forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ")
+      .parseDateTime(s)
+      .getMillis
 
   def parseLine(line: String): LogLine = {
     val logsPattern = """^(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) \"(.*)\" \"(.*)\" (\S+) (\S+)""".r
