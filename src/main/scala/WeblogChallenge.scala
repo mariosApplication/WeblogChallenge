@@ -26,7 +26,7 @@ object WeblogChallenge extends Serializable with App {
     logs
       .groupBy(log => log.client_port)
       .map { case (ip, relevantLogs) => {
-        val timestamps = relevantLogs.map(l => long2bigDecimal(l.timestamp) / double2bigDecimal(60000.0))
+        val timestamps = relevantLogs.map(l => l.timestamp / double2bigDecimal(60000.0))
         (ip, timestamps.max - timestamps.min)
       }}
 
