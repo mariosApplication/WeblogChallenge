@@ -12,7 +12,7 @@ object ReadData {
       .textFile(filepath)
       .map(parseLine)
 
-  def defaultContext() =
+  def defaultContext(): SparkContext =
     SparkSession
       .builder()
       .appName("Weblog Challenge")

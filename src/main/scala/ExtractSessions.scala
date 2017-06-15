@@ -18,7 +18,7 @@ object ExtractSessions {
       Some(logPairs
         .foldLeft (Seq (List(h)) ) {
           case (head :: agg, next) =>
-            if (next(1).timestamp - next(0).timestamp <= inactiveWindow)
+            if (next(1).timestamp - next.head.timestamp <= inactiveWindow)
               (next(1) :: head) :: agg
             else List(next(1)) :: (head :: agg)
         }

@@ -10,7 +10,7 @@ import scala.math.BigDecimal.int2bigDecimal
 
 class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   var spark: SparkSession = _
-  override def beforeAll() =
+  override def beforeAll(): Unit =
     spark = SparkSession
       .builder
       .master("local")
