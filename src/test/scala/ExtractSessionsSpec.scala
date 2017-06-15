@@ -1,12 +1,11 @@
 /**
   * Created by mariosk on 14/06/17.
   */
-import PreprocessData.LogLine
 import ExtractSessions.{splitToSessions, extractSessions}
 import ReadData.getWeblogs
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
-import scala.math.BigDecimal.int2bigDecimal
+import TestHelper.simpleLogLine
 
 class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   var spark: SparkSession = _
@@ -21,10 +20,6 @@ class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
   override def afterAll {
     spark.close()
   }
-
-  val simpleLogLineWithIp: (Int, String) => LogLine = (minutes, ip) => LogLine(timestamp = int2bigDecimal(minutes), "", client_port = ip,"","","","","","","","","","","","")
-
-  val simpleLogLine: Int => LogLine = minutes => simpleLogLineWithIp(minutes, "")
 
   "Split to sessions" should "extract all sessions with an inactive window of 15 minutes" in {
     val logs = Seq(93, 143, 5, 132, 37, 95, 116, 90, 120, 22, 140, 8, 100).map(simpleLogLine)
