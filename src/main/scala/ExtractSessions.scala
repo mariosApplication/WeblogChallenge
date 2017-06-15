@@ -13,8 +13,8 @@ object ExtractSessions {
       .sliding(2)
       .toList
 
-    (logPairs.headOption.flatMap(_.headOption), logPairs.isEmpty || (logPairs.head.length != 2)) match {
-    case (Some(h), false) =>
+    (logPairs.headOption.flatMap(_.headOption), logPairs.isEmpty, logPairs.head.length) match {
+      case (Some(h), false, 2) =>
       Some(logPairs
         .foldLeft (Seq (List(h)) ) {
           case (head :: agg, next) =>
@@ -25,7 +25,8 @@ object ExtractSessions {
         .map (x => x.reverse)
         .reverse)
 
-    case _ => None
+      case (Some(h), false, 1) => Some(Seq(List(h)))
+      case _ => None
     }
   }
 
