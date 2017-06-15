@@ -12,26 +12,20 @@ object ExtractSessions {
       .sortBy(log => log.timestamp)
       .sliding(2)
       .toList
-    try {
-      (logPairs.headOption.flatMap(_.headOption), logPairs.isEmpty || (logPairs.head.length != 2)) match {
-      case (Some(h), false) =>
-        Some(logPairs
-          .foldLeft (Seq (List(h)) ) {
-            case (head :: agg, next) =>
-              if (next(1).timestamp - next(0).timestamp <= inactiveWindow)
-                (next(1) :: head) :: agg
-              else List(next(1)) :: (head :: agg)
-          }
-          .map (x => x.reverse)
-          .reverse)
 
-      case _ => None
-    }}
-    catch {
-      case e: Exception => {
-        println(logPairs.take(10))
-        throw e
-      }
+    (logPairs.headOption.flatMap(_.headOption), logPairs.isEmpty || (logPairs.head.length != 2)) match {
+    case (Some(h), false) =>
+      Some(logPairs
+        .foldLeft (Seq (List(h)) ) {
+          case (head :: agg, next) =>
+            if (next(1).timestamp - next(0).timestamp <= inactiveWindow)
+              (next(1) :: head) :: agg
+            else List(next(1)) :: (head :: agg)
+        }
+        .map (x => x.reverse)
+        .reverse)
+
+    case _ => None
     }
   }
 
