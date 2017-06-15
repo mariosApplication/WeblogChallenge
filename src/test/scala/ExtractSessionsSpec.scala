@@ -3,10 +3,9 @@
   */
 import PreprocessData.LogLine
 import ExtractSessions.{splitToSessions, extractSessions}
-import WeblogChallenge.getWeblogs
+import ReadData.getWeblogs
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
-
 import scala.math.BigDecimal.int2bigDecimal
 
 class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll {

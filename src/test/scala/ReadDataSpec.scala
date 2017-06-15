@@ -1,11 +1,11 @@
 /**
   * Created by mariosk on 13/06/17.
   */
-import WeblogChallenge.getWeblogs
+import ReadData.getWeblogs
 import org.apache.spark.sql.SparkSession
 import org.scalatest._
 
-class WeblogChallengeSpec extends FlatSpec with Matchers with BeforeAndAfter {
+class ReadDataSpec extends FlatSpec with Matchers with BeforeAndAfter {
   var spark: SparkSession = _
   before {
     spark = SparkSession
