@@ -22,12 +22,12 @@ object PreprocessData extends Serializable {
     ssl_cipher: String,
     ssl_protocol: String) extends Serializable
 
-  val parseTime: (String) => BigDecimal = (s: String) =>
+  val parseTime: (String) => BigDecimal = s =>
     long2bigDecimal(
       DateTimeFormat
         .forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ")
         .parseDateTime(s)
-        .getMillis)
+        .getMillis) / 60000.0
 
   def parseLine(line: String): LogLine = {
     val logsPattern = """^(\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) \"(.*)\" \"(.*)\" (\S+) (\S+)""".r
