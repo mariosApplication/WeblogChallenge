@@ -13,10 +13,10 @@ object ExtractSessions {
       .sliding(2)
       .toList
 
-    (logPairs.headOption.flatMap(_.headOption), logPairs.isEmpty, logPairs.head.length) match {
-      case (Some(h), false, 2) =>
+    (logPairs.isEmpty, logPairs.head.length) match {
+      case (false, 2) =>
       Some(logPairs
-        .foldLeft (Seq (List(h)) ) {
+        .foldLeft (Seq (List(logPairs.head.head)) ) {
           case (head :: agg, next) =>
             if (next(1).timestamp - next.head.timestamp <= inactiveWindow)
               (next(1) :: head) :: agg
@@ -25,7 +25,7 @@ object ExtractSessions {
         .map (x => x.reverse)
         .reverse)
 
-      case (Some(h), false, 1) => Some(Seq(List(h)))
+      case (false, 1) => Some(Seq(List(logPairs.head.head)))
       case _ => None
     }
   }
