@@ -9,6 +9,16 @@ This is a solution to the processing & analytical part of the weblog challenge a
 
 The consists of three main parts, namely the `WeblogChallenge` and `AnalyticalGoals` files and the `Engine` package. The `AnalyticalGoals` file exposes an API which tackles each of the goals 1-4. The `Engine` package contains the implementation details of those API methods. Finally the `WeblogChallenge` file provides the method `runAnalysis` which runs steps 1-4 and persists the results to the directory `./results`. 
 
+## Some of the results
+1. Average session time: `37.96` seconds
+1. Total number of unique url visits: `438886`
+1. Top 5 most engaged users (ip address and max session time):
+    1. `213.239.204.204:35094`: `34.42645`
+    1. `103.29.159.138:57045`:  `34.42343`
+    1. `203.191.34.178:10400`:  `34.42243`
+    1. `78.46.60.71:58504`:     `34.41436`
+    1. `54.169.191.85:15462`:   `34.36146`
+
 ---
 ---
 ---
