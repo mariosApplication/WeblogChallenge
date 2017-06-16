@@ -9,7 +9,7 @@ import Engine.SessionProcessing.getSessionLenght
 import org.apache.spark.rdd.RDD
 
 object AnalyticalGoals {
-  def getSessionsPerIP(filepath: String): RDD[(String, Seq[Session])] =
+  def getSessionsPerIp(filepath: String): RDD[(String, Seq[Session])] =
     extractSessions()(getWeblogs(defaultContext(), filepath))
       .collect{ case (ip, Some(ipSessions)) => (ip, ipSessions)}
 
