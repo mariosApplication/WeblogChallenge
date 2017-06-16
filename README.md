@@ -9,6 +9,11 @@ This is a solution to the processing & analytical part of the weblog challenge a
 1. Run the analysis: `WeblogChallenge.runAnalysis()`
 1. After `~2 minutes` the results should be in the `results` directory (assuming you are using a modern computer...).
 
+## Run the tests
+The project contains a test suit which covers the whole `Engine` package, except from the `AnalyticGoals` file (due to time restrictions). The test suit includes some integration tests which use files from the `test/resources` folder.
+
+To run the tests, execute on the project directory: `sbt test`
+
 ## Code description
 
 The consists of three main parts, namely the `WeblogChallenge` and `AnalyticalGoals` files and the `Engine` package. The `AnalyticalGoals` file exposes an API which tackles each of the goals 1-4. The `Engine` package contains the implementation details of those API methods. Finally the `WeblogChallenge` file provides the method `runAnalysis` which runs steps 1-4 and persists the results to the directory `./results`. 
