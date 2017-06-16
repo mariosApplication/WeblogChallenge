@@ -1,3 +1,18 @@
+# Weblogchallenge - Application Readme
+This is a solution to the processing & analytical part of the weblog challenge assignment. It is implemented in `Scala` using the `Spark` framework.
+
+## Setup
+1. Extract the input data file: `gunzip -k 2015_07_22_mktplace_shop_web_log_sample.log.gz`
+1. Build and run the project using `SBT`
+
+## Code description
+
+The consists of three main parts, namely the `WeblogChallenge` and `AnalyticalGoals` files and the `Engine` package. The `AnalyticalGoals` file exposes an API which tackles each of the goals 1-4. The `Engine` package contains the implementation details of those API methods. Finally the `WeblogChallenge` file provides the method `runAnalysis` which runs steps 1-4 and persists the results to the directory `./results`. 
+
+---
+---
+---
+
 # WeblogChallenge
 This is an interview challenge for Paytm Labs. Please feel free to fork. Pull Requests will be ignored.
 
