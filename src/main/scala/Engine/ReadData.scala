@@ -1,7 +1,9 @@
+package Engine
+
 /**
   * Created by mariosk on 15/06/17.
   */
-import PreprocessData.{LogLine, parseLine}
+import Engine.PreprocessData.{LogLine, parseLine}
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession

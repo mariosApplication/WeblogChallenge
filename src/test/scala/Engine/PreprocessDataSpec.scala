@@ -1,7 +1,9 @@
+package Engine
+
 /**
   * Created by mariosk on 13/06/17.
   */
-import PreprocessData.{parseLine, LogLine}
+import Engine.PreprocessData.{LogLine, parseLine}
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
 class PreprocessDataSpec extends FlatSpec with BeforeAndAfter with Matchers {

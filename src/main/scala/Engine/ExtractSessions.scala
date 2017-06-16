@@ -1,7 +1,9 @@
+package Engine
+
 /**
   * Created by mariosk on 14/06/17.
   */
-import PreprocessData.LogLine
+import Engine.PreprocessData.LogLine
 import org.apache.spark.rdd.RDD
 
 object ExtractSessions {

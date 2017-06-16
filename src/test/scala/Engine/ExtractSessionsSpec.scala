@@ -1,11 +1,13 @@
+package Engine
+
 /**
   * Created by mariosk on 14/06/17.
   */
-import ExtractSessions.{splitToSessions, extractSessions}
-import ReadData.getWeblogs
+import Engine.ExtractSessions.{extractSessions, splitToSessions}
+import Engine.ReadData.getWeblogs
+import TestHelper.simpleLogLine
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
-import TestHelper.simpleLogLine
 
 class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   var spark: SparkSession = _
@@ -15,7 +17,6 @@ class ExtractSessionsSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
       .master("local")
       .appName("testing")
       .getOrCreate()
-
 
   override def afterAll {
     spark.close()
