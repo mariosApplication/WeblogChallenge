@@ -9,30 +9,29 @@ import org.apache.spark.rdd.RDD
 object ExtractSessions {
   type Session = List[LogLine]
 
-  def splitToSessions(inactiveWindow: Int)(logs: Seq[LogLine]): Option[Seq[Session]] = {
+  def splitToSessions(inactiveWindow: Int)(logs: Seq[LogLine]): Seq[Session] = {
     val logPairs = logs
       .sortBy(log => log.timestamp)
       .sliding(2)
       .toList
 
-    (logPairs.isEmpty, logPairs.head.length) match {
-      case (false, 2) =>
-      Some(logPairs
-        .foldLeft (Seq (List(logPairs.head.head)) ) {
-          case (head :: agg, next) =>
-            if (next(1).timestamp - next.head.timestamp <= inactiveWindow)
-              (next(1) :: head) :: agg
-            else List(next(1)) :: (head :: agg)
-        }
-        .map (x => x.reverse)
-        .reverse)
+    logPairs.head.length match {
+      case 2 =>
+        logPairs
+          .foldLeft (Seq (List(logPairs.head.head)) ) {
+            case (head :: agg, next) =>
+              if (next(1).timestamp - next.head.timestamp <= inactiveWindow)
+                (next(1) :: head) :: agg
+              else List(next(1)) :: (head :: agg)
+          }
+          .map (x => x.reverse)
+          .reverse
 
-      case (false, 1) => Some(Seq(List(logPairs.head.head)))
-      case _ => None
+      case 1 => Seq(List(logPairs.head.head))
     }
   }
 
-  def extractSessions(inactiveWindow: Int = 15)(logs: RDD[LogLine]): RDD[(String, Option[Seq[Session]])] =
+  def extractSessions(inactiveWindow: Int = 15)(logs: RDD[LogLine]): RDD[(String, Seq[Session])] =
     logs
       .groupBy(log => log.client_port)
       .map { case (ip, relevantLogs) => (ip, splitToSessions(inactiveWindow)(relevantLogs.toSeq)) }

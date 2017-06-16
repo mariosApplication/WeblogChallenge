@@ -11,7 +11,6 @@ import org.apache.spark.rdd.RDD
 object AnalyticalGoals {
   def getSessionsPerIp(filepath: String): RDD[(String, Seq[Session])] =
     extractSessions()(getWeblogs(defaultContext(), filepath))
-      .collect{ case (ip, Some(ipSessions)) => (ip, ipSessions)}
 
   def allSessions(sessionsPerIp: RDD[(String, Seq[Session])]): RDD[Session] =
     sessionsPerIp.flatMap(_._2)
