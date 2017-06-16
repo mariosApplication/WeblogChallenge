@@ -16,11 +16,11 @@ To run the tests, execute on the project directory: `sbt test`
 
 ## Code description
 
-The consists of three main parts, namely the `WeblogChallenge` and `AnalyticalGoals` files and the `Engine` package. The `AnalyticalGoals` file exposes an API which tackles each of the goals 1-4. The `Engine` package contains the implementation details of those API methods. Finally the `WeblogChallenge` file provides the method `runAnalysis` which runs steps 1-4 and persists the results to the directory `./results`. 
+The codebase consists of three main parts, namely the `WeblogChallenge` and `AnalyticalGoals` files and the `Engine` package. The `AnalyticalGoals` file exposes an API which tackles each of the goals 1-4. The `Engine` package contains the implementation details of those API methods. Finally the `WeblogChallenge` file provides the method `runAnalysis` which runs steps 1-4 and persists the results to the directory `./results`. 
 
 ## Some of the results
 1. Average session time: `37.96` seconds
-1. Total number of unique url visits: `438886`
+1. Total number of unique url visits: `438,886`
 1. Top 5 most engaged users (ip address and max session time):
     1. `213.239.204.204:35094`: `34.42645`
     1. `103.29.159.138:57045`:  `34.42343`
