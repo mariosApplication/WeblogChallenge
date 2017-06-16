@@ -2,8 +2,12 @@
 This is a solution to the processing & analytical part of the weblog challenge assignment. It is implemented in `Scala` using the `Spark` framework.
 
 ## Setup
-1. Extract the input data file: `gunzip -k 2015_07_22_mktplace_shop_web_log_sample.log.gz`
-1. Build and run the project using `SBT`
+1. Navigate to the project directory
+1. Extract the input data file: `gunzip -k data/2015_07_22_mktplace_shop_web_log_sample.log.gz data/`
+1. Run the `SBT` console: `sbt`
+1. Enter the `Scala` console: `console`
+1. Run the analysis: `WeblogChallenge.runAnalysis()`
+1. After `~2 minutes` the results should be in the `results` directory (assuming you are using a modern computer...).
 
 ## Code description
 
