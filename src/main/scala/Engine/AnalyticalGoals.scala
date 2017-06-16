@@ -1,9 +1,11 @@
+package Engine
+
 /**
   * Created by mariosk on 15/06/17.
   */
-import ExtractSessions.{Session, extractSessions}
-import ReadData.{defaultContext, getWeblogs}
-import SessionProcessing.getSessionLenght
+import Engine.ExtractSessions.{Session, extractSessions}
+import Engine.ReadData.{defaultContext, getWeblogs}
+import Engine.SessionProcessing.getSessionLenght
 import org.apache.spark.rdd.RDD
 
 object AnalyticalGoals {

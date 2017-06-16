@@ -1,7 +1,9 @@
+package Engine
+
 /**
   * Created by mariosk on 13/06/17.
   */
-import ReadData.getWeblogs
+import Engine.ReadData.getWeblogs
 import org.apache.spark.sql.SparkSession
 import org.scalatest._
 

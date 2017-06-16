@@ -1,8 +1,11 @@
+package Engine
+
 /**
   * Created by mariosk on 13/06/17.
   */
 import org.joda.time.format._
-import scala.math.BigDecimal.{long2bigDecimal}
+
+import scala.math.BigDecimal.long2bigDecimal
 
 object PreprocessData extends Serializable {
   case class LogLine (

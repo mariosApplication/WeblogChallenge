@@ -1,9 +1,11 @@
+package Engine
+
 /**
   * Created by mariosk on 15/06/17.
   */
-import SessionProcessing.getSessionLenght
-import org.scalatest.{FlatSpec, Matchers}
+import Engine.SessionProcessing.getSessionLenght
 import TestHelper.simpleLogLine
+import org.scalatest.{FlatSpec, Matchers}
 
 class SessionProcessingSpec extends FlatSpec with Matchers {
   "GetSessionLength" should "compute the time length of a session" in {
